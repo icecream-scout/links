@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Basic Meta Information -->
+    <meta name="description" content="A collection site of useful links.">
+    <meta name="keywords" content="Links, Bookmarks, Collections">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Protocol (OGP) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="Simple Link Collection">
+    <meta property="og:description" content="A collection site of useful links.">
+    <meta property="og:image" content="https://your-domain.com/ogp.jpg">
+    <meta property="og:site_name" content="Simple Link Collection">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourTwitterHandle">
+    <meta name="twitter:title" content="Simple Link Collection">
+    <meta name="twitter:description" content="A collection site of useful links.">
+    <meta name="twitter:image" content="https://your-domain.com/twitter-card.jpg">
+
+    <!-- Favicon and application icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- preload -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="main.js" as="script">
+    <link rel="preload" href="config.json" as="fetch" crossorigin="anonymous">
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- canonical URL -->
+    <link rel="canonical" href="https://your-domain.com/">
+
+    <title>Simple Link Collection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="pageTitle"></h1>
+        </header>
+
+        <main class="link-grid" id="linkContainer">
+            <!-- Links will be dynamically inserted here -->
+            <noscript>
+                <p>JavaScript must be enabled in order to fully utilize the functionality of this site.</p>
+            </noscript>
+        </main>
+        <footer>
+            <p>&copy; <span id="currentYear"></span> Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Simple Link Collection",
+        "description": "A collection site of useful links.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Your Organization Name"
+        }
+    }
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>

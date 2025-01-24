@@ -1,0 +1,42 @@
+{
+    "pageTitle": "My Link Collection",
+    "socialLinks": [
+        {
+            "platform": "X",
+            "url": "https://twitter.com/youraccount",
+            "icon": "icon-x"
+        },
+        {
+            "platform": "Instagram",
+            "url": "https://instagram.com/youraccount",
+            "icon": "icon-instagram"
+        },
+        {
+            "platform": "TikTok",
+            "url": "https://tiktok.com/@youraccount",
+            "icon": "icon-tiktok"
+        },
+        {
+            "platform": "YouTube",
+            "url": "https://youtube.com/@youraccount",
+            "icon": "icon-youtube"
+        }
+    ],
+    "links": [
+        {
+            "title": "link title 1",
+            "description": "The link description will go here.",
+            "url": "#"
+        },
+        {
+            "title": "link title2",
+            "description": "The link description will go here.",
+            "url": "#"
+        },
+        {
+            "title": "link title3",
+            "description": "The link description will go here.",
+            "url": "#"
+        }
+    ]
+}
