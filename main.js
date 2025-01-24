@@ -22,7 +22,7 @@ async function initializeContent() {
                 socialLink.rel = 'noopener noreferrer';
                 socialLink.innerHTML = `
                     <svg class="social-icon ${social.icon}" aria-label="${social.platform}">
-                        <use href="/icons.svg#${social.icon}"></use>
+                        <use href="./icons.svg#${social.icon}"></use>
                     </svg>
                 `;
                 socialContainer.appendChild(socialLink);
