@@ -11,10 +11,10 @@ async function initializeContent() {
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Generate social links
-        if (config.socialLinks && config.socialLinks.length > 0) {
+        if (config.socialLinks?.length > 0) {
             const socialContainer = document.createElement('div');
             socialContainer.className = 'social-links';
-            config.socialLinks.forEach(social => {
+            for (const social of config.socialLinks) {
                 const socialLink = document.createElement('a');
                 socialLink.href = social.url;
                 socialLink.className = 'social-link';
@@ -26,7 +26,7 @@ async function initializeContent() {
                     </svg>
                 `;
                 socialContainer.appendChild(socialLink);
-            });
+            }
 
             // Insert after header
             const header = document.querySelector('header');
@@ -35,7 +35,7 @@ async function initializeContent() {
 
         // Generate link cards
         const linkContainer = document.getElementById('linkContainer');
-        config.links.forEach(link => {
+        for (const link of config.links) {
             const linkCard = document.createElement('a');
             linkCard.href = link.url;
             linkCard.className = 'link-card';
@@ -46,7 +46,7 @@ async function initializeContent() {
                 </div>
             `;
             linkContainer.appendChild(linkCard);
-        });
+        }
     } catch (error) {
         console.error('Failed to load configuration:', error);
     }
