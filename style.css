@@ -1,30 +1,219 @@
+/* Base variables */
 :root {
+  /* Colors */
   --color-bg: #f5f5f5;
-  --color-text: #333;
-  --color-text-secondary: #666;
-  --color-card: #fff;
+  --color-text: #333333;
+  --color-text-secondary: #666666;
+  --color-card: #ffffff;
+
+  /* Spacing and Layout */
   --spacing-base: 1rem;
-  --max-width: 800px;
-  --border-radius: 8px;
-  --shadow-default: 0 2px 4px rgb(0 0 0 / 0.1);
-  --shadow-hover: 0 4px 8px rgb(0 0 0 / 0.15);
+  --max-width: 768px;
+  --border-radius: 0.75rem;
+
+  /* Shadows */
+  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  /* Icons and Typography */
   --icon-size: 1.5rem;
-  --icon-color: var(--color-text);
-  --icon-hover-color: #1da1f2;  /*Example hover color*/
+  --card-icon-size: clamp(2.25rem, 5vw, 2.75rem);
+  --font-size-base: 1rem;
+  --font-size-small: clamp(0.75rem, 2vw, 0.85rem);
+  --font-size-large: clamp(1rem, 3vw, 1.25rem);
+  --icon-hover-color: #1da1f2;  /* Social icon hover color */
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Base layout */
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   background-color: var(--color-bg);
   min-height: 100dvh;
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--container-padding);
+  color: var(--color-text);
+}
+
+/* Header styles */
+header {
+  text-align: center;
+  margin-block-end: calc(var(--spacing-base) * 1.5);
+}
+
+/* Typography */
+h1 {
+  font-size: var(--font-size-large);
+}
+
+/* Bio section */
+.bio {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  margin-block-end: calc(var(--spacing-base) * 1.5);
+  max-width: 85%;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+/* Link grid layout */
+.link-grid {
+  display: grid;
+  gap: calc(var(--spacing-base) * 1.25);
+  width: 100%;
+}
+
+/* Card styles */
+.link-card {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-base) * 0.75) calc(var(--spacing-base) * 1);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-default);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-base) * 1.25);
+  position: relative;
+  overflow: visible;  /* Allow hover effect to overflow */
+}
+
+/* Card icon styles */
+.link-icon {
+  width: var(--card-icon-size);
+  height: var(--card-icon-size);
+  flex-shrink: 0;
+  color: var(--color-text);
+  background-color: var(--color-card);
+  border-radius: 22%;
+  box-shadow: var(--shadow-default);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing-base) * 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: center;  /* Ensure transform from center */
+}
+
+.link-icon svg {
+  width: 65%;
+  height: 65%;
+  display: block;
+}
+
+.link-content {
+  flex-grow: 1;
+  min-width: 0; /* Prevent text overflow */
+}
+
+.link-content h2 {
+  margin-block-end: calc(var(--spacing-base) * 0.3);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.link-content p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.4;
+}
+
+/* Hover effects */
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.link-card:hover .link-icon {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  z-index: 2;  /* Ensure icon stays above other elements */
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing-base) * 1.5);
+  margin-block-end: calc(var(--spacing-base) * 1.25);
+}
+
+.social-link {
+  color: var(--color-text);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  color: var(--icon-hover-color);
+}
+
+/* Share modal */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bio {
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+    max-width: 95%;
+  }
+
+  .link-grid {
+    gap: calc(var(--spacing-base) * 1);
+  }
+
+  .link-card {
+    padding: calc(var(--spacing-base) * 0.6);
+    gap: calc(var(--spacing-base) * 1);
+  }
+
+  .share-button {
+    right: var(--spacing-base);
+  }
+}
+
+/* Utility classes */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .bio {
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+    max-width: 95%;
+  }
+  /* ... other mobile styles */
 }
 
 .container {
@@ -33,63 +222,44 @@ body {
   padding: calc(var(--spacing-base) * 2);
 }
 
-header {
-  text-align: center;
-  margin-block-end: calc(var(--spacing-base) * 3);
-}
-
-.link-grid {
-  display: grid;
-  gap: calc(var(--spacing-base) * 1.5);
-  width: 100%;
-}
-
-.link-card {
-  background-color: var(--color-card);
-  border-radius: var(--border-radius);
-  padding: calc(var(--spacing-base) * 1.5);
-  text-decoration: none;
-  color: inherit;
-  box-shadow: var(--shadow-default);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-hover);
-  }
-}
-
-.link-content {
-  h2 {
-    margin-block-end: calc(var(--spacing-base) * 0.5);
-    color: var(--color-text);
-  }
-
-  p {
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-  }
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: calc(var(--spacing-base) * 1.5);
-  margin-block-end: calc(var(--spacing-base) * 2);
-}
-
-.social-link {
-  color: var(--icon-color);
-  transition: color 0.2s ease;
-  &:hover {
-    color: var(--icon-hover-color);
-  }
-}
-
 .social-icon {
   width: var(--icon-size);
   height: var(--icon-size);
+  fill: currentColor;
+  display: block;
+  pointer-events: none;
+}
+
+svg.social-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.social-link svg.social-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+.share-button svg.social-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.share-native-button svg.social-icon {
+  width: calc(var(--icon-size) * 0.8);
+  height: calc(var(--icon-size) * 0.8);
+}
+
+.close-modal svg.social-icon {
+  width: calc(var(--icon-size) * 0.8);
+  height: calc(var(--icon-size) * 0.8);
+}
+
+.copy-button svg.social-icon {
+  width: calc(var(--icon-size) * 0.8);
+  height: calc(var(--icon-size) * 0.8);
 }
 
 footer {
@@ -97,12 +267,201 @@ footer {
   margin-block-start: calc(var(--spacing-base) * 3);
   padding-block-end: var(--spacing-base);
   color: var(--color-text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--font-size-small);
 }
 
-/* レスポンシブ対応 */
+.account-icon {
+  width: calc(var(--icon-size) * 3);
+  height: calc(var(--icon-size) * 3);
+  border-radius: 50%;
+  margin-bottom: calc(var(--spacing-base) * 0.5);
+  object-fit: cover;
+}
+
+.share-button {
+  position: fixed;
+  top: calc(var(--spacing-base) * 1.5);
+  right: calc((100vw - min(var(--max-width), 100vw - var(--spacing-base) * 2)) / 2);
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 1.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  border: none;
+  padding: calc(var(--spacing-base) * 0.25);
+  background: none;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.share-button:hover {
+  color: var(--color-text);
+}
+
+.is-apple-device .share-button {
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-default);
+}
+
+.is-apple-device .share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.share-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.share-content {
+  background-color: var(--color-card);
+  padding: calc(var(--spacing-base) * 2);
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.share-content h2 {
+  font-size: var(--font-size-large);
+  margin-bottom: calc(var(--spacing-base) * 1.5);
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto calc(var(--spacing-base) * 1.5);
+  display: block;
+  object-fit: contain;  /* Ensure proper scaling */
+  background-color: white;  /* Ensure good contrast */
+}
+
+.url-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing-base) * 0.25);
+  background-color: var(--color-bg);
+  padding: calc(var(--spacing-base) * 0.75);
+  border-radius: calc(var(--border-radius) * 0.5);
+  margin-bottom: calc(var(--spacing-base) * 1.5);
+}
+
+.url-text {
+  font-size: var(--font-size-small);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
+
+.copy-button {
+  flex-shrink: 0;
+  padding: calc(var(--spacing-base) * 0.25);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-button:hover {
+  color: var(--icon-hover-color);
+}
+
+.share-native-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing-base) * 0.5);
+  background-color: var(--color-text);
+  color: var(--color-card);
+  padding: calc(var(--spacing-base) * 0.75) calc(var(--spacing-base) * 1.5);
+  border-radius: calc(var(--border-radius) * 0.5);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  transition: all 0.2s ease;
+  margin: 0 auto;
+}
+
+.share-native-button:hover {
+  background-color: var(--color-text-secondary);
+  box-shadow: var(--shadow-default);
+}
+
+/* Optional: Add focus state for accessibility */
+.share-native-button:focus {
+  outline: 2px solid var(--color-text-secondary);
+  outline-offset: 2px;
+}
+
+.close-modal {
+  position: absolute;
+  top: calc(var(--spacing-base) * 0.75);
+  right: calc(var(--spacing-base) * 0.75);
+  width: calc(var(--icon-size) * 1.25);
+  height: calc(var(--icon-size) * 1.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: calc(var(--spacing-base) * 0.25);
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+  color: var(--color-text);
+}
+
+/* Common Styles */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: calc(var(--spacing-base) * 0.25);
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+/* layout */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: calc(var(--spacing-base) * 2);
+}
+
+/* Icons */
+.social-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  fill: currentColor;
+  display: block;
+  pointer-events: none;
+}
+
+/* Below, keep only the necessary styles and use the above classes for those that can be shared. */
+
+/* QR code styles */
 @media (max-width: 768px) {
-  .container {
-    padding: var(--spacing-base);
+  .qr-code {
+    width: 160px;  /* Slightly smaller on mobile */
+    height: 160px;
   }
 }
