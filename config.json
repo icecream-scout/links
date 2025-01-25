@@ -1,42 +1,65 @@
 {
-    "pageTitle": "My Link Collection",
-    "socialLinks": [
+    "pageTitle": "Icecream Scout",
+    "header": {
+        "accountIcon": {
+            "url": "https://avatars.githubusercontent.com/u/196110064?s=200&v=4",
+            "alt": "Icecream Scout Profile",
+            "show": true
+        },
+        "bio": {
+            "text": "Sharing global ice cream discoveries to make them accessible for everyone🍦",
+            "show": true
+        }
+    },
+    "social": {
+        "show": false,
+        "links": [
+            {
+                "platform": "X",
+                "url": "https://x.com/icrm_scout",
+                "icon": "icon-x"
+            },
+            {
+                "platform": "Instagram",
+                "url": "https://instagram.com/icrm_scout",
+                "icon": "icon-instagram"
+            },
+            {
+                "platform": "TikTok",
+                "url": "https://tiktok.com/@icrm_scout",
+                "icon": "icon-tiktok"
+            },
+            {
+                "platform": "YouTube",
+                "url": "https://www.youtube.com/@icrm_scout",
+                "icon": "icon-youtube"
+            }
+        ]
+    },
+    "mainLinks": [
         {
-            "platform": "X",
-            "url": "https://twitter.com/youraccount",
+            "title": "X",
+            "description": "Mainly announcing new information.",
+            "url": "https://x.com/icrm_scout",
             "icon": "icon-x"
         },
         {
-            "platform": "Instagram",
-            "url": "https://instagram.com/youraccount",
+            "title": "Instagram",
+            "description": "Mainly pictures of delicious ice cream.",
+            "url": "https://instagram.com/icrm_scout",
             "icon": "icon-instagram"
         },
         {
-            "platform": "TikTok",
-            "url": "https://tiktok.com/@youraccount",
+            "title": "TikTok",
+            "description": "Content for quick & easy browsing.",
+            "url": "https://tiktok.com/@icrm_scout",
             "icon": "icon-tiktok"
         },
         {
-            "platform": "YouTube",
-            "url": "https://youtube.com/@youraccount",
+            "title": "YouTube",
+            "description": "Variety of video content available.",
+            "url": "https://www.youtube.com/@icrm_scout",
             "icon": "icon-youtube"
-        }
-    ],
-    "links": [
-        {
-            "title": "link title 1",
-            "description": "The link description will go here.",
-            "url": "#"
-        },
-        {
-            "title": "link title2",
-            "description": "The link description will go here.",
-            "url": "#"
-        },
-        {
-            "title": "link title3",
-            "description": "The link description will go here.",
-            "url": "#"
         }
     ]
 }
