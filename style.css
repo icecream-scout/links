@@ -1,10 +1,13 @@
-/* Base variables */
+/* ==========================================================================
+   1. Root Variables
+   ========================================================================== */
 :root {
   /* Colors */
   --color-bg: #f5f5f5;
   --color-text: #333333;
   --color-text-secondary: #666666;
   --color-card: #ffffff;
+  --icon-hover-color: #1da1f2;  /* Social icon hover color */
 
   /* Spacing and Layout */
   --spacing-base: 1rem;
@@ -21,17 +24,17 @@
   --font-size-base: 1rem;
   --font-size-small: clamp(0.75rem, 2vw, 0.85rem);
   --font-size-large: clamp(1rem, 3vw, 1.25rem);
-  --icon-hover-color: #1da1f2;  /* Social icon hover color */
 }
 
-/* Reset */
+/* ==========================================================================
+   2. Reset & Base Styles
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base layout */
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
@@ -44,18 +47,24 @@ body {
   color: var(--color-text);
 }
 
-/* Header styles */
+/* ==========================================================================
+   3. Layout & Container
+   ========================================================================== */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: calc(var(--spacing-base) * 2);
+}
+
 header {
   text-align: center;
   margin-block-end: calc(var(--spacing-base) * 1.5);
 }
 
-/* Typography */
 h1 {
   font-size: var(--font-size-large);
 }
 
-/* Bio section */
 .bio {
   text-align: center;
   color: var(--color-text-secondary);
@@ -66,14 +75,34 @@ h1 {
   line-height: 1.5;
 }
 
-/* Link grid layout */
+footer {
+  text-align: center;
+  margin-block-start: calc(var(--spacing-base) * 3);
+  padding-block-end: var(--spacing-base);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* ==========================================================================
+   4. Account & Profile
+   ========================================================================== */
+.account-icon {
+  width: calc(var(--icon-size) * 3);
+  height: calc(var(--icon-size) * 3);
+  border-radius: 50%;
+  margin-bottom: calc(var(--spacing-base) * 0.5);
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   5. Link Grid & Cards
+   ========================================================================== */
 .link-grid {
   display: grid;
   gap: calc(var(--spacing-base) * 1.25);
   width: 100%;
 }
 
-/* Card styles */
 .link-card {
   background-color: var(--color-card);
   border-radius: var(--border-radius);
@@ -88,6 +117,23 @@ h1 {
   gap: calc(var(--spacing-base) * 1.25);
   position: relative;
   overflow: visible;  /* Allow hover effect to overflow */
+}
+
+.link-content {
+  flex-grow: 1;
+  min-width: 0; /* Prevent text overflow */
+}
+
+.link-content h2 {
+  margin-block-end: calc(var(--spacing-base) * 0.3);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.link-content p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.4;
 }
 
 /* Card icon styles */
@@ -115,36 +161,9 @@ h1 {
   display: block;
 }
 
-.link-content {
-  flex-grow: 1;
-  min-width: 0; /* Prevent text overflow */
-}
-
-.link-content h2 {
-  margin-block-end: calc(var(--spacing-base) * 0.3);
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-}
-
-.link-content p {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-small);
-  line-height: 1.4;
-}
-
-/* Hover effects */
-.link-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
-}
-
-.link-card:hover .link-icon {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
-  z-index: 2;  /* Ensure icon stays above other elements */
-}
-
-/* Social links */
+/* ==========================================================================
+   6. Social Links & Icons
+   ========================================================================== */
 .social-links {
   display: flex;
   justify-content: center;
@@ -155,71 +174,6 @@ h1 {
 .social-link {
   color: var(--color-text);
   transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.social-link:hover {
-  transform: translateY(-2px);
-  color: var(--icon-hover-color);
-}
-
-/* Share modal */
-.share-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0 0 0 / 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .bio {
-    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
-    max-width: 95%;
-  }
-
-  .link-grid {
-    gap: calc(var(--spacing-base) * 1);
-  }
-
-  .link-card {
-    padding: calc(var(--spacing-base) * 0.6);
-    gap: calc(var(--spacing-base) * 1);
-  }
-
-  .share-button {
-    right: var(--spacing-base);
-  }
-}
-
-/* Utility classes */
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .bio {
-    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
-    max-width: 95%;
-  }
-  /* ... other mobile styles */
-}
-
-.container {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding: calc(var(--spacing-base) * 2);
 }
 
 .social-icon {
@@ -262,53 +216,23 @@ svg.social-icon {
   height: calc(var(--icon-size) * 0.8);
 }
 
-footer {
-  text-align: center;
-  margin-block-start: calc(var(--spacing-base) * 3);
-  padding-block-end: var(--spacing-base);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-small);
-}
-
-.account-icon {
-  width: calc(var(--icon-size) * 3);
-  height: calc(var(--icon-size) * 3);
-  border-radius: 50%;
-  margin-bottom: calc(var(--spacing-base) * 0.5);
-  object-fit: cover;
-}
-
-.share-button {
+/* ==========================================================================
+   7. Share Modal & Buttons
+   ========================================================================== */
+.share-modal {
   position: fixed;
-  top: calc(var(--spacing-base) * 1.5);
-  right: calc((100vw - min(var(--max-width), 100vw - var(--spacing-base) * 2)) / 2);
-  width: calc(var(--icon-size) * 1.5);
-  height: calc(var(--icon-size) * 1.5);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  border: none;
-  padding: calc(var(--spacing-base) * 0.25);
-  background: none;
-  color: var(--color-text-secondary);
-  transition: color 0.2s ease;
-}
-
-.share-button:hover {
-  color: var(--color-text);
-}
-
-.is-apple-device .share-button {
-  background-color: var(--color-card);
-  box-shadow: var(--shadow-default);
-}
-
-.is-apple-device .share-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
 
 .share-modal.active {
@@ -359,6 +283,25 @@ footer {
   max-width: 60%;
 }
 
+.share-button {
+  position: fixed;
+  top: calc(var(--spacing-base) * 1.5);
+  right: calc((100vw - min(var(--max-width), 100vw - var(--spacing-base) * 2)) / 2);
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 1.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  border: none;
+  padding: calc(var(--spacing-base) * 0.25);
+  background: none;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
 .copy-button {
   flex-shrink: 0;
   padding: calc(var(--spacing-base) * 0.25);
@@ -370,10 +313,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.copy-button:hover {
-  color: var(--icon-hover-color);
 }
 
 .share-native-button {
@@ -390,17 +329,6 @@ footer {
   font-size: var(--font-size-base);
   transition: all 0.2s ease;
   margin: 0 auto;
-}
-
-.share-native-button:hover {
-  background-color: var(--color-text-secondary);
-  box-shadow: var(--shadow-default);
-}
-
-/* Optional: Add focus state for accessibility */
-.share-native-button:focus {
-  outline: 2px solid var(--color-text-secondary);
-  outline-offset: 2px;
 }
 
 .close-modal {
@@ -420,11 +348,61 @@ footer {
   transition: color 0.2s ease;
 }
 
+/* ==========================================================================
+   8. Hover & Focus States
+   ========================================================================== */
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.link-card:hover .link-icon {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  z-index: 2;  /* Ensure icon stays above other elements */
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  color: var(--icon-hover-color);
+}
+
+.share-button:hover {
+  color: var(--color-text);
+}
+
+.is-apple-device .share-button {
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-default);
+}
+
+.is-apple-device .share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.copy-button:hover {
+  color: var(--icon-hover-color);
+}
+
+.share-native-button:hover {
+  background-color: var(--color-text-secondary);
+  box-shadow: var(--shadow-default);
+}
+
 .close-modal:hover {
   color: var(--color-text);
 }
 
-/* Common Styles */
+/* Focus states */
+.share-native-button:focus {
+  outline: 2px solid var(--color-text-secondary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   9. Utility Classes
+   ========================================================================== */
 .flex-center {
   display: flex;
   align-items: center;
@@ -440,26 +418,28 @@ footer {
   transition: color 0.2s ease;
 }
 
-/* layout */
-.container {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding: calc(var(--spacing-base) * 2);
-}
-
-/* Icons */
-.social-icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  fill: currentColor;
-  display: block;
-  pointer-events: none;
-}
-
-/* Below, keep only the necessary styles and use the above classes for those that can be shared. */
-
-/* QR code styles */
+/* ==========================================================================
+   10. Media Queries
+   ========================================================================== */
 @media (max-width: 768px) {
+  .bio {
+    font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+    max-width: 95%;
+  }
+
+  .link-grid {
+    gap: calc(var(--spacing-base) * 1);
+  }
+
+  .link-card {
+    padding: calc(var(--spacing-base) * 0.6);
+    gap: calc(var(--spacing-base) * 1);
+  }
+
+  .share-button {
+    right: var(--spacing-base);
+  }
+
   .qr-code {
     width: 160px;  /* Slightly smaller on mobile */
     height: 160px;
