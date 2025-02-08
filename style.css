@@ -7,7 +7,7 @@
   --color-text: #333333;
   --color-text-secondary: #666666;
   --color-card: #ffffff;
-  --icon-hover-color: #1da1f2;  /* Social icon hover color */
+  --icon-hover-color: #ed98b4;  /* Social icon hover color */
 
   /* Spacing and Layout */
   --spacing-base: 1rem;
@@ -36,7 +36,10 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: "Playpen Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.6;
   background-color: var(--color-bg);
   min-height: 100dvh;
